@@ -6,10 +6,10 @@ services:
       context: ./ui
       dockerfile: Dockerfile.dev
    ports:
-    -  4200:4200
-   container_name: mean-ui
+    -  8080:8080
+   container_name: mevn-ui
    networks:
-    -  mean-stack-net
+    -  mevn-stack-net
    volumes:
     -  ./ui/src:/usr/app/src
     -  ./ui/public:/usr/app/public
@@ -24,9 +24,9 @@ services:
       dockerfile: Dockerfile.dev
    ports:
      - 3080:3080
-   container_name: mean-api
+   container_name: mevn-api
    networks:
-     - mean-stack-net
+     - mevn-stack-net
    volumes:
     - ./api/src:/usr/app/src
    depends_on:
@@ -38,12 +38,12 @@ services:
       - 27017:27017
     container_name: mongo-db
     networks:
-      - mean-stack-net
+      - mevn-stack-net
     volumes:
       - mongo-data:/data/db
 
 networks:
-  mean-stack-net:
+  mevn-stack-net:
     driver: bridge
 
 volumes:
